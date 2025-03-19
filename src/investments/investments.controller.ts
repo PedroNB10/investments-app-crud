@@ -11,11 +11,12 @@ import {
 } from '@nestjs/common';
 import { InvestmentsService } from './investments.service';
 import { CreateInvestmentDto, UpdateInvestmentDto } from './investments.dto';
+import { ApiOperation } from '@nestjs/swagger';
 
 @Controller('investments')
 export class InvestmentsController {
   constructor(private readonly investmentsService: InvestmentsService) {}
-
+  @ApiOperation({ summary: 'Create an investment' })
   @Post()
   async create(@Body() createInvestmentDto: CreateInvestmentDto) {
     const investment =
@@ -26,7 +27,7 @@ export class InvestmentsController {
       data: investment,
     };
   }
-
+  @ApiOperation({ summary: 'Get all investments' })
   @Get()
   async findAll() {
     const investments = await this.investmentsService.findAll();
@@ -43,7 +44,7 @@ export class InvestmentsController {
       data: investments,
     };
   }
-
+  @ApiOperation({ summary: 'Get an investment by ID' })
   @Get(':id')
   async findOne(@Param('id') id: string) {
     const investment = await this.investmentsService.findOne(id);
@@ -54,6 +55,7 @@ export class InvestmentsController {
     };
   }
 
+  @ApiOperation({ summary: 'Update an investment by ID' })
   @Put(':id')
   async update(
     @Param('id') id: string,
@@ -70,6 +72,7 @@ export class InvestmentsController {
     };
   }
 
+  @ApiOperation({ summary: 'Delete an investment by ID' })
   @Delete(':id')
   @HttpCode(HttpStatus.OK)
   async remove(@Param('id') id: string) {

@@ -67,3 +67,7 @@ Este comando realiza as seguintes ações sequenciais:
 ---
 
 📌 Agora você já pode utilizar sua aplicação de controle de investimentos! 💰📈
+
+## Documentação da API
+
+O projeto estará rodando em `http://localhost:3000`. Você pode acessar a documentação da API em `http://localhost:3000/api`. Fique atento se o docker está rodando para que o banco de dados esteja disponível.
